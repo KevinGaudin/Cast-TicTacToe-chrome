@@ -1,0 +1,73 @@
+<!--
+// Copyright 2014 Google Inc. All Rights Reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+-->
+
+<html ng-app>
+  <head>
+    <title>Cast V2 Tic Tac Toe</title>
+    <link rel="icon" href="">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
+    <script src="ttt.js"></script>
+  </head>
+<body ng-controller="TicTacToeAppCtrl">
+  <div ng-switch on="apiInitialzed" >
+    <span ng-switch-default><b>Initializing</b></span>
+
+    <div ng-switch-when="true">
+      <span ng-show="!model.observing">
+        <button ng-click="play()" ng-show="!model.started">Play</button>
+        <button ng-click="quit()" ng-show="model.started">Quit</button>
+      </span>
+      <hr>
+      <div>
+        Status: {{ model.status }}
+      </div>
+      <div ng-show="!!model.outcome">
+        Outcome: {{ model.outcome }}
+      </div>
+      <div ng-show="!!model.symbol">
+        Your symbol: {{ model.symbol }}
+      </div>
+      <div ng-repeat="row in model.boardDisplay"
+           ng-init="row_index = $index">
+        <tt ng-repeat="cell in row">
+          <!--({{ row_index }},{{ $index }})-->
+          <span style="font-size: 500%" ng-switch="cell">
+            <span ng-switch-when="0">
+              <span ng-show="model.myTurn"
+                    ng-click="move(row_index, $index)">
+                &otimes;
+              </span>
+              <span ng-show="!model.myTurn">
+                &bull;
+              </span>
+            </span>
+            <span ng-switch-when="1"> X </span>
+            <span ng-switch-when="2"> O </span>
+            <span ng-switch-default> ? </span>
+          </span>
+        </tt>
+      </div>
+      <hr>
+      <div>
+        <button ng-click="stop()">Stop App</button>
+      </div>
+    </div>
+  </div>
+  <textarea rows="20" cols="70">
+    {{model.message}}
+  </textarea>
+</body>
+</html>
