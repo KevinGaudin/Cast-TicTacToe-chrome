@@ -3,8 +3,8 @@
 
 Demonstration of a two-player TicTacToe app for the Chromecast and Chrome browser. 
 
-There is also a TicTacToe sender app available for Android, which shares a common receiver TicTacToe app. You
-can find the source for Android sender in the Android SDK at:
+There is also a TicTacToe sender app available for Android, which shares the same receiver TicTacToe app with
+this Chrome TicTacToe sender app. You can find the source for Android TicTacToe sender in the Android SDK at:
 
 <SDK_HOME>/extras/google/google_play_services/samples/cast/tictactoe
 
